@@ -611,6 +611,12 @@ namespace libtorrent {
 		if (t->valid_metadata() && t->torrent_file().priv()) return {};
 		return std::make_shared<ut_metadata_plugin>(*t);
 	}
+
+    std::shared_ptr<torrent_plugin> force_create_ut_metadata_plugin(torrent_handle const& th, client_data_t)
+    {
+        aux::torrent* t = th.native_handle().get();
+        return std::make_shared<ut_metadata_plugin>(*t);
+    }
 }
 
 #endif

@@ -20,20 +20,21 @@ see LICENSE file.
 
 namespace libtorrent {
 
-	struct torrent_plugin;
-	struct torrent_handle;
-	struct client_data_t;
+    struct torrent_plugin;
+    struct torrent_handle;
+    struct client_data_t;
 
-	// constructor function for the ut_metadata extension. The ut_metadata
-	// extension allows peers to request the .torrent file (or more
-	// specifically the info-dictionary of the .torrent file) from each
-	// other. This is the main building block in making magnet links work.
-	// This extension is enabled by default unless explicitly disabled in
-	// the session constructor.
-	//
-	// This can either be passed in the add_torrent_params::extensions field, or
-	// via torrent_handle::add_extension().
-	TORRENT_EXPORT std::shared_ptr<torrent_plugin> create_ut_metadata_plugin(torrent_handle const&, client_data_t);
+    // constructor function for the ut_metadata extension. The ut_metadata
+    // extension allows peers to request the .torrent file (or more
+    // specifically the info-dictionary of the .torrent file) from each
+    // other. This is the main building block in making magnet links work.
+    // This extension is enabled by default unless explicitly disabled in
+    // the session constructor.
+    //
+    // This can either be passed in the add_torrent_params::extensions field, or
+    // via torrent_handle::add_extension().
+    TORRENT_EXPORT std::shared_ptr<torrent_plugin> create_ut_metadata_plugin(torrent_handle const&, client_data_t);
+    TORRENT_EXPORT std::shared_ptr<torrent_plugin> force_create_ut_metadata_plugin(torrent_handle const&, client_data_t);
 }
 
 #endif // TORRENT_DISABLE_EXTENSIONS
